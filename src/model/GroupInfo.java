@@ -1,20 +1,20 @@
-package dbo;
+package model;
 
-public class GroupCurator {
+public class GroupInfo {
     private int idgroup;
     private String groupname;
     private String curatorfio;
 
     @Override
     public String toString() {
-        return "GroupCurator{" +
+        return "GroupInfo{" +
                 "idgroup=" + idgroup +
                 ", groupname='" + groupname + '\'' +
                 ", curatorfio='" + curatorfio + '\'' +
                 '}';
     }
 
-    public GroupCurator(int idgroup, String groupname, String curatorfio) {
+    public GroupInfo(int idgroup, String groupname, String curatorfio) {
         this.idgroup = idgroup;
         this.groupname = groupname;
         this.curatorfio = curatorfio;

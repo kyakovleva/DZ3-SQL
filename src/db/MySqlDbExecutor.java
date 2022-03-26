@@ -37,6 +37,28 @@ public class MySqlDbExecutor implements IDbExecutor {
     }
 
     @Override
+    public int executeUpdate(String sqlRequest) {
+        IReadProperty<Properties> readerProps = new ReadPropertiesFromPropsFile();
+        Properties properties = readerProps.read();
+
+        int updateQuery = 0;
+
+        try {
+            connect = DriverManager.getConnection(
+                    properties.getProperty("url") + "/" + properties.getProperty("db_name"),
+                    properties.getProperty("username"),
+                    properties.getProperty("password")
+            );
+
+            statement = connect.createStatement();
+            updateQuery = statement.executeUpdate(sqlRequest);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return updateQuery;
+    }
+
+    @Override
     public void close() {
         try {
             connect.close();

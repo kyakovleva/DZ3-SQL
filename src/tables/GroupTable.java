@@ -1,22 +1,34 @@
-//package tables;
-//
-//import dbo.Group;
-//import dbo.Student;
-//
-//import java.util.List;
-//
-//public class GroupTable extends TableAbs implements ITable {
-//    //(select g.id from grоup g where groupname = %s)
-//    private Group group;
-//
-//    public GroupTable(String dbType) {
-//        super(dbType);
-//    }
-//
-//    @Override
-//    public List<Group> list(String[] pred) {
-//        String requestTemplate = "";
-//        requestTemplate = String.format("select g.id from grоup g where groupname = %s", Group.tableName)
-//        return null;
-//    }
-//}
+package tables;
+
+import dbo.Group;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class GroupTable extends TableAbs {
+
+    public GroupTable(String dbType) {
+        super(dbType);
+    }
+
+    public Integer getGroupByName(String groupName) {
+        ResultSet resultSet = this.dbExecutor.execute(String.format("select id from %1s where groupName = \'%2s\'", Group.tableName, groupName));
+
+        Integer groupId = null;
+
+        try {
+            while (resultSet.next()) {
+                groupId = resultSet.getInt(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            this.dbExecutor.close();
+        }
+        return groupId;
+    }
+
+    public int updateCurator(int groupId, int newCuratorId) {
+        return this.dbExecutor.executeUpdate(String.format("update %s set id_curator=%d where id=%d", Group.tableName, newCuratorId, groupId));
+    }
+}

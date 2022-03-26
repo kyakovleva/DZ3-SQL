@@ -1,6 +1,6 @@
-package dbo;
+package model;
 
-public class StudentGroupCurator {
+public class StudentsInfo {
     private int id;
     private String fio;
     private String sex;
@@ -10,17 +10,16 @@ public class StudentGroupCurator {
 
     @Override
     public String toString() {
-        return "StudentGroupCurator{" +
+        return "StudentsInfo{" +
                 "id=" + id +
                 ", fio='" + fio + '\'' +
                 ", sex='" + sex + '\'' +
-                ", idgroup=" + idgroup +
                 ", groupname='" + groupname + '\'' +
                 ", curatorfio='" + curatorfio + '\'' +
                 '}';
     }
 
-    public StudentGroupCurator(int id, String fio, String sex, int idgroup, String groupname, String curatorfio) {
+    public StudentsInfo(int id, String fio, String sex, String groupname, String curatorfio) {
         this.id = id;
         this.fio = fio;
         this.sex = sex;
