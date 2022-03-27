@@ -27,8 +27,6 @@ public class MySqlDbExecutor implements IDbExecutor {
 
             statement = connect.createStatement();
             resultSet = statement.executeQuery(sqlRequest);
-
-
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
