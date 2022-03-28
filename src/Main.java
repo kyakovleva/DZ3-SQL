@@ -49,9 +49,9 @@ public class Main {
     private static void task6(StudentTable studentTable) {
         System.out.println("Задание №6: Вывести на экран количество студентов");
 
-        int studentsCount = studentTable.studentsCount();
+        int studentsCount = studentTable.tableCount();
 
-        System.out.printf("Количество студентов = %d", studentsCount);
+        System.out.println(String.format("Количество студентов = %d", studentsCount));
 
         System.out.println("==============================================================================================");
     }

@@ -1,6 +1,7 @@
 package tables;
 
 import dbo.Group;
+import dbo.Student;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,4 +32,6 @@ public class GroupTable extends TableAbs {
     public int updateCurator(int groupId, int newCuratorId) {
         return this.dbExecutor.executeUpdate(String.format("update %s set id_curator=%d where id=%d", Group.tableName, newCuratorId, groupId));
     }
+
+
 }

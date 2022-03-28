@@ -39,22 +39,8 @@ public class StudentTable extends TableAbs {
     }
 //Вывести на экран количество студентов
 
-    public int studentsCount() {
-        String query = "select count(*) from %s";
-
-        ResultSet resultSet = this.dbExecutor.execute(String.format(query, Student.tableName));
-        int count = 0;
-        try {
-            while (resultSet.next()) {
-                count = resultSet.getInt(1);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            this.dbExecutor.close();
-        }
-
-        return count;
+    public int tableCount() {
+        return tableCount(Student.tableName);
     }
 
     public List<Student> getStudentsByGroup(String groupName) {
